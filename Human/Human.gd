@@ -24,5 +24,6 @@ func _on_Damage_timeout():
 	$Tween.start()
 
 func _die():
-	pass
-	# TODO
+	$AnimationPlayer.play("Die")
+	yield($AnimationPlayer, "animation_finished")
+	queue_free()
