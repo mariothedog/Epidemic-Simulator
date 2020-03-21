@@ -33,4 +33,5 @@ func _movement(delta):
 	position += velocity * delta
 
 func _infect(human):
-	print("Attempting to infect %s." % human.name)
+	if not human.infected:
+		human.infect()
