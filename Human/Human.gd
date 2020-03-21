@@ -1,12 +1,33 @@
 extends Area2D
 
+const SPEED = 100
+
 var health = 100
 
 var virus_damage = 0
 var infected = false
 
+onready var pos = position
+
 func _ready():
 	$"Health Bar".visible = false
+
+func _physics_process(delta):
+	_ai(delta)
+
+func _ai(delta):
+	if _stepify_vector(position, 10) == _stepify_vector(pos, 10):
+		pos = _get_random_pos()
+	var dir = position.direction_to(pos)
+	position += dir * SPEED * delta
+
+func _get_random_pos():
+	var x = rand_range(0, get_viewport_rect().size.x)
+	var y = rand_range(0, get_viewport_rect().size.y)
+	return Vector2(x, y)
+
+func _stepify_vector(vec, step):
+	return Vector2(stepify(vec.x, step), stepify(vec.y, step))
 
 func infect(damage):
 	infected = true
