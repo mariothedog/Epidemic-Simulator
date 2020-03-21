@@ -10,6 +10,7 @@ func _physics_process(delta):
 	_movement(delta)
 
 func _get_input():
+	# Movement input
 	var input_vel = Vector2()
 	
 	if Input.is_action_pressed("move_right"):
@@ -22,6 +23,14 @@ func _get_input():
 		input_vel.y += 1
 	
 	velocity = input_vel.normalized() * SPEED * speed_multiplier
+	
+	# Other input
+	if Input.is_action_pressed("infect"):
+		if get_overlapping_areas():
+			infect()
 
 func _movement(delta):
 	position += velocity * delta
+
+func infect():
+	print("Attempting to infect.")
