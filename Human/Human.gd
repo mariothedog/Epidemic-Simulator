@@ -17,7 +17,7 @@ func infect(damage):
 
 func _on_Damage_timeout():
 	health -= virus_damage
-	health = min(health, 0)
+	health = max(health, 0)
 	if health == 0:
 		_die()
 	$Tween.interpolate_property($"Health Bar", "value", $"Health Bar".value, health, 0.5)
