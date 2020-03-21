@@ -26,11 +26,11 @@ func _get_input():
 	
 	# Other input
 	if Input.is_action_pressed("infect"):
-		if get_overlapping_areas():
-			infect()
+		for human in get_overlapping_areas():
+			infect(human)
 
 func _movement(delta):
 	position += velocity * delta
 
-func infect():
-	print("Attempting to infect.")
+func infect(human):
+	print("Attempting to infect %s." % human.name)
