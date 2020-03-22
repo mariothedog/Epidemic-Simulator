@@ -30,16 +30,14 @@ func _get_random_pos():
 func _stepify_vector(vec, step):
 	return Vector2(stepify(vec.x, step), stepify(vec.y, step))
 
-func infect(damage, spread_chance):
+func infect():
 	infected = true
-	virus_damage = damage
-	virus_spread_chance = spread_chance
 	$"Health Bar".visible = true
 	$AnimationPlayer.play("Infect")
 	$Damage.start()
 
 func _on_Damage_timeout():
-	health -= virus_damage
+	health -= global.virus_damage
 	health = max(health, 0)
 	if health == 0:
 		_die()
@@ -53,5 +51,5 @@ func _die():
 
 func _on_Human_area_entered(area):
 	if infected and "Human" in area.name and not area.infected:
-		if randf() < virus_spread_chance:
-			area.infect(virus_damage, virus_spread_chance)
+		if randf() < global.virus_spread_chance:
+			area.infect()
