@@ -23,14 +23,12 @@ func _get_input():
 		input_vel.y += 1
 	
 	velocity = input_vel.normalized() * SPEED * speed_multiplier
-	
-	# Other input
-	if Input.is_action_pressed("infect"):
-		for human in get_overlapping_areas():
-			_infect(human)
 
 func _movement(delta):
 	position += velocity * delta
+
+func _on_Player_area_entered(area):
+	_infect(area)
 
 func _infect(human):
 	if not human.infected:
