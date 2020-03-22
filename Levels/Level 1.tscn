@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Human/Human.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=3]
 [ext_resource path="res://Levels/Humans.gd" type="Script" id=4]
 [ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=5]
@@ -25,21 +24,6 @@ __meta__ = {
 
 [node name="Humans" type="YSort" parent="."]
 script = ExtResource( 4 )
-
-[node name="Human" parent="Humans" instance=ExtResource( 2 )]
-position = Vector2( 738, 166 )
-
-[node name="Human2" parent="Humans" instance=ExtResource( 2 )]
-position = Vector2( 286, 460 )
-
-[node name="Human3" parent="Humans" instance=ExtResource( 2 )]
-position = Vector2( 182, 166 )
-
-[node name="Human4" parent="Humans" instance=ExtResource( 2 )]
-position = Vector2( 823, 487 )
-
-[node name="Human5" parent="Humans" instance=ExtResource( 2 )]
-position = Vector2( 955, 259 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 476, 321 )

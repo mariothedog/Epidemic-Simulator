@@ -20,14 +20,9 @@ func _physics_process(delta):
 
 func _ai(delta):
 	if _stepify_vector(position, 10) == _stepify_vector(pos, 10):
-		pos = _get_random_pos()
+		pos = get_parent().get_random_pos()
 	var dir = position.direction_to(pos)
 	position += dir * SPEED * delta
-
-func _get_random_pos():
-	var x = rand_range(0, get_viewport_rect().size.x)
-	var y = rand_range(0, get_viewport_rect().size.y)
-	return Vector2(x, y)
 
 func _stepify_vector(vec, step):
 	return Vector2(stepify(vec.x, step), stepify(vec.y, step))
