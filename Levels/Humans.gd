@@ -24,3 +24,7 @@ func create_human(pos, infected):
 		human.call_deferred("infect", true)
 	else:
 		human.call_deferred("play_spawn_anim")
+
+func _process(_delta):
+	if get_child_count() == 0:
+		global.go_to_next_level()
