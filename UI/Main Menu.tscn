@@ -22,6 +22,10 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+color = Color( 1, 0.333333, 0.333333, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -36,7 +40,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 964.0
-margin_bottom = 484.0
+margin_bottom = 468.0
 custom_constants/separation = 150
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
@@ -60,9 +64,9 @@ focus_mode = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.396078, 0.396078, 0.396078, 1 )
-custom_colors/font_color_hover = Color( 0.294118, 0.294118, 0.294118, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0.439216, 0.666667, 1 )
+custom_colors/font_color_hover = Color( 0, 0.215686, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.109804, 0.164706, 1 )
 enabled_focus_mode = 0
 text = "Play"
 flat = true
