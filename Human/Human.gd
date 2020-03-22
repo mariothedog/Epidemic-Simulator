@@ -48,8 +48,10 @@ func _on_Damage_timeout():
 
 func _die():
 	$AnimationPlayer.play("Die")
-	yield($AnimationPlayer, "animation_finished")
-	queue_free()
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Die":
+		queue_free()
 
 func _on_Human_area_entered(area):
 	if "Human" in area.name:
