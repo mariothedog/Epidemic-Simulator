@@ -1,13 +1,13 @@
-extends Area2D
+extends KinematicBody2D
 
 const SPEED = 300
 
 var velocity = Vector2()
 var speed_multiplier = 1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	_get_input()
-	_movement(delta)
+	_movement()
 
 func _get_input():
 	# Movement input
@@ -24,10 +24,10 @@ func _get_input():
 	
 	velocity = input_vel.normalized() * SPEED * speed_multiplier
 
-func _movement(delta):
-	position += velocity * delta
+func _movement():
+	velocity = move_and_slide(velocity)
 
-func _on_Player_area_entered(area):
+func _on_Area2D_area_entered(area):
 	_infect(area)
 
 func _infect(human):
