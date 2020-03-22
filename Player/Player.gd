@@ -37,7 +37,7 @@ func _on_Area2D_area_entered(area):
 func _infect(human):
 	$"Damage SFX".play()
 	if human.infected:
-		human.damage(global.virus_damage)
+		human.damage(global.virus_damage * 2)
 	else:
 		human.infect(false)
 
