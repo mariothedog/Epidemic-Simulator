@@ -4,6 +4,8 @@ const SPEED = 100
 
 var health = 100
 
+var can_create_human = true
+
 var virus_damage = 0
 var virus_spread_chance = 0
 var infected = false
@@ -50,6 +52,25 @@ func _die():
 	queue_free()
 
 func _on_Human_area_entered(area):
-	if infected and "Human" in area.name and not area.infected:
-		if randf() < global.virus_spread_chance:
+	if "Human" in area.name:
+		if infected and not area.infected and randf() < global.virus_spread_chance:
 			area.infect()
+		else:
+			if can_create_human and area.can_create_human:
+				get_parent().create_human(position)
+				
+				delay_ability_to_create_humans()
+				area.delay_ability_to_create_humans()
+
+func delay_ability_to_create_humans():
+	can_create_human = false
+	yield(get_tree().create_timer(5), "timeout")
+	can_create_human = true
+
+func delay_collisions():
+	$CollisionShape2D.set_deferred("disabled", true)
+	yield(get_tree().create_timer(1), "timeout")
+	$CollisionShape2D.set_deferred("disabled", false)
+
+func play_spawn_anim():
+	$AnimationPlayer.play("Spawn")
