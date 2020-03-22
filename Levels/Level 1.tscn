@@ -15,7 +15,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Humans" type="Node2D" parent="."]
+[node name="Humans" type="YSort" parent="."]
 
 [node name="Human" parent="Humans" instance=ExtResource( 2 )]
 position = Vector2( 738, 166 )
