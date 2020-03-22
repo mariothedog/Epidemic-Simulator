@@ -33,3 +33,6 @@ func _on_Area2D_area_entered(area):
 func _infect(human):
 	if not human.infected:
 		human.infect(false)
+
+func _on_Resistance_Timer_timeout():
+	global.virus_spread_chance -= global.virus_spread_chance * global.virus_spread_resistance
