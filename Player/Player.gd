@@ -23,6 +23,10 @@ func _get_input():
 		input_vel.y += 1
 	
 	velocity = input_vel.normalized() * SPEED * speed_multiplier
+	
+	# Other input
+	if Input.is_action_just_pressed("restart"):
+		global.restart_level()
 
 func _movement():
 	velocity = move_and_slide(velocity)

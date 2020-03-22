@@ -91,5 +91,9 @@ func go_to_next_level():
 	virus_spread_chance = epidemic_initial_spread[current_level-1]
 	virus_spread_resistance = epidemic_spread_resistance[current_level-1]
 	virus_pass_down_chance = epidemic_pass_down_chance[current_level-1]
+	
+	restart_level()
+
+func restart_level():
 	if get_tree().reload_current_scene() != OK:
 		print_debug("An error occured while reloading the current scene.")
