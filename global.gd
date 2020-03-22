@@ -86,14 +86,21 @@ var epidemic_pass_down_chance = [
 ]
 
 func go_to_next_level():
-	current_level += 1
-	virus_damage = epidemic_damage[current_level-1]
-	virus_spread_chance = epidemic_initial_spread[current_level-1]
-	virus_spread_resistance = epidemic_spread_resistance[current_level-1]
-	virus_pass_down_chance = epidemic_pass_down_chance[current_level-1]
-	
-	restart_level()
+	if current_level == 11:
+		_go_to_main_menu()
+	else:
+		current_level += 1
+		virus_damage = epidemic_damage[current_level-1]
+		virus_spread_chance = epidemic_initial_spread[current_level-1]
+		virus_spread_resistance = epidemic_spread_resistance[current_level-1]
+		virus_pass_down_chance = epidemic_pass_down_chance[current_level-1]
+		
+		restart_level()
 
 func restart_level():
 	if get_tree().reload_current_scene() != OK:
 		print_debug("An error occured while reloading the current scene.")
+
+func _go_to_main_menu():
+	if get_tree().change_scene("res://UI/Main Menu.tscn") != OK:
+		print_debug("An error occured while changing to the main menu scene.")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Fonts/BalooDa2-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/Main Menu.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 100.0
+margin_right = -30.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 964.0
+margin_bottom = 484.0
+custom_constants/separation = 150
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 964.0
+margin_bottom = 109.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Epidemic Simulator"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 259.0
+margin_right = 964.0
+margin_bottom = 320.0
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 447.0
+margin_right = 517.0
+margin_bottom = 61.0
+focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+custom_colors/font_color_hover = Color( 0.294118, 0.294118, 0.294118, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "Play"
+flat = true
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_Button_pressed"]
