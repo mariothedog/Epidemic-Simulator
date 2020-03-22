@@ -37,6 +37,8 @@ func infect(just_spawned):
 	$Damage.start()
 
 func damage(amount):
+	if health > 0:
+		$AnimationPlayer.play("Hurt")
 	health -= amount
 	health = max(health, 0)
 	if health == 0:
