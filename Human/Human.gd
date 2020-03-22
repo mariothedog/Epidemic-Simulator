@@ -52,6 +52,6 @@ func _die():
 	queue_free()
 
 func _on_Human_area_entered(area):
-	if infected and "Human" in area.name:
+	if infected and "Human" in area.name and not area.infected:
 		if randf() < virus_spread_chance:
 			area.infect(virus_damage, virus_spread_chance)
