@@ -5,6 +5,7 @@ var current_level = 1
 var virus_damage = 10
 var virus_spread_chance = 1
 var virus_spread_resistance = 0.2 # Percentage of virus_spread_chance reduced.
+var virus_pass_down_chance = 0.9 # Percentage chance that if both parents have the virus it will be passed down to the child.
 
 var epidemic_names = [
 	"Smallpox",
@@ -71,10 +72,24 @@ var epidemic_damage = [
 	80
 ]
 
+var epidemic_pass_down_chance = [
+	0.9,
+	0.6,
+	0.5,
+	0.5,
+	0.4,
+	0.4,
+	0.3,
+	0.3,
+	0.2,
+	0.1
+]
+
 func go_to_next_level():
 	current_level += 1
 	virus_damage = epidemic_damage[current_level-1]
 	virus_spread_chance = epidemic_initial_spread[current_level-1]
 	virus_spread_resistance = epidemic_spread_resistance[current_level-1]
+	virus_pass_down_chance = epidemic_pass_down_chance[current_level-1]
 	if get_tree().reload_current_scene() != OK:
 		print_debug("An error occured while reloading the current scene.")

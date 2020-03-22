@@ -60,7 +60,7 @@ func _on_Human_area_entered(area):
 			area.infect(false)
 		else:
 			if can_create_human and area.can_create_human:
-				var child_infected = infected and area.infected
+				var child_infected = infected and area.infected and randf() < global.virus_pass_down_chance
 				get_parent().create_human(position, child_infected)
 				
 				delay_ability_to_create_humans()
