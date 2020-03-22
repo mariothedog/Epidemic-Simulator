@@ -65,4 +65,5 @@ __meta__ = {
 [node name="Damage" type="Timer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+[connection signal="area_entered" from="." to="." method="_on_Human_area_entered"]
 [connection signal="timeout" from="Damage" to="." method="_on_Damage_timeout"]

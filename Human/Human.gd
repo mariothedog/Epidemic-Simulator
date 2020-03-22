@@ -5,6 +5,7 @@ const SPEED = 100
 var health = 100
 
 var virus_damage = 0
+var virus_spread_chance = 0
 var infected = false
 
 onready var pos = position
@@ -29,9 +30,10 @@ func _get_random_pos():
 func _stepify_vector(vec, step):
 	return Vector2(stepify(vec.x, step), stepify(vec.y, step))
 
-func infect(damage):
+func infect(damage, spread_chance):
 	infected = true
 	virus_damage = damage
+	virus_spread_chance = spread_chance
 	$"Health Bar".visible = true
 	$AnimationPlayer.play("Infect")
 	$Damage.start()
@@ -48,3 +50,8 @@ func _die():
 	$AnimationPlayer.play("Die")
 	yield($AnimationPlayer, "animation_finished")
 	queue_free()
+
+func _on_Human_area_entered(area):
+	if infected and "Human" in area.name:
+		if randf() < virus_spread_chance:
+			area.infect(virus_damage, virus_spread_chance)

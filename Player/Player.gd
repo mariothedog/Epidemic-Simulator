@@ -5,6 +5,7 @@ const SPEED = 300
 var velocity = Vector2()
 var speed_multiplier = 1
 var damage = 10
+var spread_chance = 1
 
 func _physics_process(delta):
 	_get_input()
@@ -35,4 +36,4 @@ func _movement(delta):
 
 func _infect(human):
 	if not human.infected:
-		human.infect(damage)
+		human.infect(damage, spread_chance)
