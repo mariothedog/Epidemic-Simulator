@@ -64,12 +64,16 @@ func _on_Human_area_entered(area):
 
 func delay_ability_to_create_humans():
 	can_create_human = false
-	yield(get_tree().create_timer(5), "timeout")
+	$"Delay Ability to Create Humans".start()
+
+func _on_Delay_Ability_to_Create_Humans_timeout():
 	can_create_human = true
 
 func delay_collisions():
 	$CollisionShape2D.set_deferred("disabled", true)
-	yield(get_tree().create_timer(1), "timeout")
+	$"Delay Collisions".start()
+
+func _on_Delay_Collisions_timeout():
 	$CollisionShape2D.set_deferred("disabled", false)
 
 func play_spawn_anim():

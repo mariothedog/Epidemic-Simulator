@@ -85,5 +85,14 @@ __meta__ = {
 [node name="Damage" type="Timer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Delay Ability to Create Humans" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Delay Collisions" type="Timer" parent="."]
+one_shot = true
 [connection signal="area_entered" from="." to="." method="_on_Human_area_entered"]
 [connection signal="timeout" from="Damage" to="." method="_on_Damage_timeout"]
+[connection signal="timeout" from="Delay Ability to Create Humans" to="." method="_on_Delay_Ability_to_Create_Humans_timeout"]
+[connection signal="timeout" from="Delay Collisions" to="." method="_on_Delay_Collisions_timeout"]
