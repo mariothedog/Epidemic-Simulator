@@ -32,10 +32,13 @@ func _get_random_pos():
 func _stepify_vector(vec, step):
 	return Vector2(stepify(vec.x, step), stepify(vec.y, step))
 
-func infect():
+func infect(just_spawned):
 	infected = true
 	$"Health Bar".visible = true
-	$AnimationPlayer.play("Infect")
+	if just_spawned:
+		$AnimationPlayer.play("Spawn and Infect")
+	else:
+		$AnimationPlayer.play("Infect")
 	$Damage.start()
 
 func _on_Damage_timeout():
@@ -56,10 +59,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_Human_area_entered(area):
 	if "Human" in area.name:
 		if infected and not area.infected and randf() < global.virus_spread_chance:
-			area.infect()
+			area.infect(false)
 		else:
 			if can_create_human and area.can_create_human:
-				get_parent().create_human(position)
+				var child_infected = infected and area.infected
+				get_parent().create_human(position, child_infected)
 				
 				delay_ability_to_create_humans()
 				area.delay_ability_to_create_humans()

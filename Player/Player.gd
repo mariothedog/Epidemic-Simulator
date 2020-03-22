@@ -32,4 +32,4 @@ func _on_Player_area_entered(area):
 
 func _infect(human):
 	if not human.infected:
-		human.infect()
+		human.infect(false)
