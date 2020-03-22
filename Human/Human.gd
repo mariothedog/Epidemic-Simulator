@@ -36,11 +36,14 @@ func infect(just_spawned):
 		$AnimationPlayer.play("Infect")
 	$Damage.start()
 
-func _on_Damage_timeout():
-	health -= global.virus_damage
+func damage(amount):
+	health -= amount
 	health = max(health, 0)
 	if health == 0:
 		_die()
+
+func _on_Damage_timeout():
+	damage(global.virus_damage)
 	$Tween.interpolate_property($"Health Bar", "value", $"Health Bar".value, health, 0.5)
 	$Tween.start()
 
